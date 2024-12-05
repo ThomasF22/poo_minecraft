@@ -3,22 +3,22 @@ package jeu;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Joueur extends Entite {
-    private List<Bloc> inventaire;
+public class Joueur extends Entity {
+    private List<Block> inventory;
 
-    public Joueur(String nom) {
-        super(nom, 100, 10, 15);
-        this.inventaire = new ArrayList<>();
+    public Joueur(String name) {
+        super(name, 100, 10, 15);
+        this.inventory = new ArrayList<>();
     }
 
-    public void ajouterAuInventaire(Bloc bloc) {
-        inventaire.add(bloc);
-        System.out.println("Bloc ajouté à l'inventaire : " + bloc.getNom());
+    public void ajouterAuInventaire(Block block) {
+        inventory.add(block);
+        System.out.println("Bloc ajouté à l'inventaire : " + block.getName());
     }
 
     @Override
-    public void attaquer(Entite cible) {
-        System.out.println(nom + " attaque " + cible.nom + " avec " + pointsDattaque + " points d'attaque.");
-        cible.subirDegats(pointsDattaque);
+    public void attack(Entity target) {
+        System.out.println(name + " attaque " + target.name + " avec " + attackPoints + " points d'attaque.");
+        target.takeDamage(attackPoints);
     }
 }
