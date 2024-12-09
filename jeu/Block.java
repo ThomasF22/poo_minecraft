@@ -3,7 +3,7 @@ package jeu;
 public class Block {
     private String name;
     private boolean breakable;
-    private boolean consummable; // Peut-être mettre ça dans la possible classe Item ?
+    private boolean consummable; // Dans Item
 
     public Block(String name, boolean breakable, boolean consummable) {
         this.name = name;

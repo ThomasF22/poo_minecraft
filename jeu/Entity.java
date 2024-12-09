@@ -21,6 +21,8 @@ public abstract class Entity {
         int realDamage = Math.max(0, degats - defensePoints);
         healthPoints -= realDamage;
         System.out.println(name + " subit " + realDamage + " dégâts. PV restants : " + healthPoints);
+
+        // if isAlive == False : bah tu meurs gros
     }
 
     public abstract void attack(Entity cible);

@@ -11,7 +11,7 @@ public class Joueur extends Entity {
         this.inventory = new ArrayList<>();
     }
 
-    public void ajouterAuInventaire(Block block) {
+    public void pickupItem(Block block) {
         inventory.add(block);
         System.out.println("Bloc ajouté à l'inventaire : " + block.getName());
     }
@@ -20,5 +20,9 @@ public class Joueur extends Entity {
     public void attack(Entity target) {
         System.out.println(name + " attaque " + target.name + " avec " + attackPoints + " points d'attaque.");
         target.takeDamage(attackPoints);
+    }
+
+    public void equipItem(EquippableItem item){
+        System.err.println("Vous avez équippé : " + item.getName());
     }
 }

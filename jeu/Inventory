@@ -1,0 +1,51 @@
+package jeu;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Inventory {
+    private List<InventoryItem> items;
+
+    public Inventory() {
+        items = new ArrayList<>();
+    }
+
+    public void addItem(String item, int quantity) {
+        Item item = ItemRegistry.getItem(item);
+        if (item == null) {
+            System.out.println("Item " + item + " does not exist!");
+            return;
+        }
+
+        // Check si l'item est déjà dans l'inventaire
+        for (InventoryItem inventoryItem : items) {
+            if (inventoryItem.getItem().getId().equals(item.getId())) {
+                inventoryItem.addQuantity(quantity);
+                return;
+            }
+        }
+
+        // Sinon, le rajoute
+        items.add(new InventoryItem(item, quantity));
+    }
+
+    public void removeItem(String item, int quantity) {
+        for (InventoryItem inventoryItem : items) {
+            if (inventoryItem.getItem().getId().equals(item)) {
+                inventoryItem.removeQuantity(quantity);
+                if (inventoryItem.getQuantity() <= 0) {
+                    items.remove(inventoryItem);
+                }
+                return;
+            }
+        }
+        System.out.println("Item " + item + " not found in inventory!");
+    }
+
+    public void displayInventory() {
+        System.out.println("Inventaire:");
+        for (InventoryItem inventoryItem : items) {
+            System.out.println("- " + inventoryItem.getItem().toString() + " x" + inventoryItem.getQuantity());
+        }
+    }
+}
